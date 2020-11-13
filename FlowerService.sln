@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowerService", "FlowerService\FlowerService.csproj", "{56E57727-65FF-4462-8E07-71D48636EEEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56E57727-65FF-4462-8E07-71D48636EEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E57727-65FF-4462-8E07-71D48636EEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E57727-65FF-4462-8E07-71D48636EEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E57727-65FF-4462-8E07-71D48636EEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3DF1906-CDCE-4DF0-833B-C11F1C727E20}
+	EndGlobalSection
+EndGlobal
