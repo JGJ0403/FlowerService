@@ -31,6 +31,7 @@ namespace FlowerService
             col.DefaultCellStyle.Alignment = textAlign;
             col.Visible = visibility;
             col.ReadOnly = true;
+            int a;
 
             dgv.Columns.Add(col);
         }
