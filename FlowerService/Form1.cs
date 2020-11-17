@@ -1,5 +1,4 @@
-﻿using MySqlX.XDevAPI.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,18 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FlowerService
+namespace WinPwdSearch
 {
-    public partial class Login : Form
+    public partial class Form1 : Form
     {
-        public Login()
+        public Form1()
         {
             InitializeComponent();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //유효성 검사
+            //유효성검사
             if (txtID.Text.Trim().Length < 1 || txtPwd.Text.Trim().Length < 1)
                 return;
 
@@ -32,18 +31,17 @@ namespace FlowerService
 
             if (member == null)
             {
-                MessageBox.Show("회원정보가 없습니다. 다시 확인 요망");
+                MessageBox.Show("회원정보가 없습니다. 다시 확인하여 주십시오.");
             }
             else
             {
                 if (member.IsAdmin == "Y")
-                    MessageBox.Show("관리자로 로그인 하셨습니다.");
+                    MessageBox.Show("관리자로 로그인하셨습니다.");
                 else
                     MessageBox.Show($"{member.Name}님 환영합니다.");
             }
         }
 
-        // 아이디, 비밀번호 찾기 할때 이런 기법 사용!
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pnlSearch.Visible = true;
@@ -56,34 +54,34 @@ namespace FlowerService
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //유효성검사
-            if (txtIDs.Text.Trim().Length < 1 || txtNames.Text.Trim().Length < 1
-                 || txtEmails.Text.Trim().Length < 1)
+            //유효성 검사
+            if (txtIDS.Text.Trim().Length < 1 || txtNameS.Text.Trim().Length < 1 
+                || txtEmailS.Text.Trim().Length < 1)
                 return;
 
             MemberDB db = new MemberDB();
-            int result = db.SearchPwd(txtIDs.Text.Trim(), txtNames.Text.Trim(), txtEmails.Text.Trim());
+            //입력정보가 적합한지 체크
+            int result = db.SearchPwd(txtIDS.Text.Trim(), txtNameS.Text.Trim(), txtEmailS.Text.Trim());
             if (result < 1)
             {
                 MessageBox.Show("회원정보가 없습니다.");
                 return;
             }
 
-            // +++++비밀번호 신규생성 로직+++++
+            //비밀번호 신규생성 로직
 
-            // 새로운 비밀번호를 난수로 생성해서
+            //새로운 비밀번호를 난수로 생성해서
             string newPwd = CreatePassword();
 
-            // 새로운 비밀번호로 회원정보를 update하고 
-            bool flag = db.UpdatePwd(newPwd, txtIDs.Text.Trim());
-
-            // 새로운 비밀번호를 메일로 발송해주는것 (PDF 참조)
+            //새로운 비밀번호로 회원정보를 update하고,
+            bool flag = db.UpdatePwd(newPwd, txtIDS.Text.Trim());            
             if (flag)
             {
-                flag = SendMail(txtNames.Text, txtEmails.Text, txtIDs.Text, newPwd);
+                //새로운 비밀번호를 메일로 발송해주는 것
+                flag = SendMail(txtNameS.Text, txtEmailS.Text, txtIDS.Text, newPwd);
                 if (flag)
                 {
-                    MessageBox.Show("초기화된 비밀번호를 Email로 발송하였습니다..");
+                    MessageBox.Show("초기화된 비밀번호를 Email로 발송하였습니다.");
                 }
                 else
                 {
@@ -92,7 +90,7 @@ namespace FlowerService
             }
             else
             {
-                MessageBox.Show("비밀번호 변경중 오류가 발생했습니다.");
+                MessageBox.Show("비밀번호 변경 중 오류가 발생했습니다.");
             }
         }
 
@@ -101,17 +99,17 @@ namespace FlowerService
             try
             {
                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-                client.UseDefaultCredentials = false; //시스템에 설정된 인증 정보를 사용하지 않는다 
-                client.EnableSsl = true; // SSL을 사용한다.
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.Credentials = new NetworkCredential("jkj04032000@gmail.com", "jkj04037956");
+                client.UseDefaultCredentials = false; //시스템에 설정된 인증 정보를 사용하지 않는다.
+                client.EnableSsl = true; //SSL을 사용한다.
+                client.DeliveryMethod = SmtpDeliveryMethod.Network; //Gmail 인증
+                client.Credentials = new NetworkCredential("gmail계정", "gmail비밀번호");
 
                 MailAddress mailTo = new MailAddress(email);
-                MailAddress mailFrom = new MailAddress("jkj04032000@gmail.com");
+                MailAddress mailFrom = new MailAddress("gmail계정");
 
                 MailMessage message = new MailMessage(mailFrom, mailTo);
                 message.Subject = $"{name}님의 비밀번호 초기화 안내 메일입니다.";
-                message.Body = $"{name}님의 비밀번호 {newPwd}초기화 되었습니다.";
+                message.Body = $"{name}님의 비밀번호는 {newPwd}으로 초기화 되었습니다.";
                 message.BodyEncoding = Encoding.UTF8;
                 message.SubjectEncoding = Encoding.UTF8;
 
@@ -119,7 +117,6 @@ namespace FlowerService
 
                 return true;
             }
-
             catch (Exception err)
             {
                 return false;
@@ -130,23 +127,19 @@ namespace FlowerService
         {
             Random rnd = new Random();
 
-            // 신규 비밀번호 = 난수로 8자리 (영문대문자 + 숫자)
-
+            //신규비밀번호 = 난수8자리(영문대문자 + 숫자)
             StringBuilder sb = new StringBuilder();
-            //string pwd = string.Empty;
 
-            for (int i = 0; i < 8; i++)
+            for(int i=0; i<8; i++)
             {
-                int val = rnd.Next(0, 36); // 숫자 (0~9 => 숫자, 10~35=>영문자)
-                if (val < 10) //숫자
+                int val = rnd.Next(0, 36); //0~35 (0~9=>숫자, 10~35=>영문자)
+                if (val < 10)              //숫자
                     sb.Append(val);
-                // pwd += val.ToString();
-                else // 영문 대문자 (65~90 -> A~ )
+                else                       //영문대문자 (65~90)
                     sb.Append((char)(val + 55));
-                // pwd += (char)(val + 55);
             }
+
             return sb.ToString();
-            // return pwd;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -157,15 +150,14 @@ namespace FlowerService
             DataRow dr = dt.NewRow();
             dr["Code"] = "";
             dr["CodeName"] = "선택";
-            dt.Rows.InsertAt(dr,0); // 지금 만든 줄이 제일 아래로가게
-            dt.AcceptChanges(); // 지금 설정한 이 데이터셋을 commit하겠다.
+            dt.Rows.InsertAt(dr, 0);
+            dt.AcceptChanges();
 
             comboBox1.DisplayMember = "CodeName";
             comboBox1.ValueMember = "Code";
             comboBox1.DataSource = dt;
 
-            //comboBox1.SelectedIndex = -1; 
-            // 몇번째 아이템을 선택할거냐 (시작이 0인데 -1을 가르키면 가르킬게 없어서 초창기에 빈값으로 보임.
+            //comboBox1.SelectedIndex = -1;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

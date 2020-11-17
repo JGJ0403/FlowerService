@@ -17,10 +17,16 @@ namespace FlowerService
             InitializeComponent();
         }
 
-        private void 로그인ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 상품ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
+            frmItem frm2 = new frmItem();
+            frm2.Show();
+        }
+
+        private void 회원관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            adminUser user = new adminUser();
+            user.Show();
         }
     }
 }

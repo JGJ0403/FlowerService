@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FlowerService
 {
-    public partial class Item : Form
+    public partial class adminUser : Form
     {
-        public Item()
+        public adminUser()
         {
             InitializeComponent();
         }
