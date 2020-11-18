@@ -10,52 +10,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinPwdSearch
+namespace FlowerService
 {
-    public partial class Form1 : Form
+    public partial class pwdSearch : Form
     {
-        public Form1()
+        public pwdSearch()
         {
             InitializeComponent();
         }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            //유효성검사
-            if (txtID.Text.Trim().Length < 1 || txtPwd.Text.Trim().Length < 1)
-                return;
-
-            MemberDB db = new MemberDB();
-            Member member = db.Login(txtID.Text.Trim(), txtPwd.Text.Trim());
-            db.Dispose();
-
-            if (member == null)
-            {
-                MessageBox.Show("회원정보가 없습니다. 다시 확인하여 주십시오.");
-            }
-            else
-            {
-                if (member.IsAdmin == "Y")
-                    MessageBox.Show("관리자로 로그인하셨습니다.");
-                else
-                    MessageBox.Show($"{member.Name}님 환영합니다.");
-            }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            pnlSearch.Visible = true;
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            pnlSearch.Visible = false;
+            pwdSearch pwd = new pwdSearch();
+            pwd.Close();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             //유효성 검사
-            if (txtIDS.Text.Trim().Length < 1 || txtNameS.Text.Trim().Length < 1 
+            if (txtIDS.Text.Trim().Length < 1 || txtNameS.Text.Trim().Length < 1
                 || txtEmailS.Text.Trim().Length < 1)
                 return;
 
@@ -74,7 +46,7 @@ namespace WinPwdSearch
             string newPwd = CreatePassword();
 
             //새로운 비밀번호로 회원정보를 update하고,
-            bool flag = db.UpdatePwd(newPwd, txtIDS.Text.Trim());            
+            bool flag = db.UpdatePwd(newPwd, txtIDS.Text.Trim());
             if (flag)
             {
                 //새로운 비밀번호를 메일로 발송해주는 것
@@ -94,6 +66,25 @@ namespace WinPwdSearch
             }
         }
 
+        private string CreatePassword()
+        {
+            Random rnd = new Random();
+
+            //신규비밀번호 = 난수8자리(영문대문자 + 숫자)
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < 8; i++)
+            {
+                int val = rnd.Next(0, 36); //0~35 (0~9=>숫자, 10~35=>영문자)
+                if (val < 10)              //숫자
+                    sb.Append(val);
+                else                       //영문대문자 (65~90)
+                    sb.Append((char)(val + 55));
+            }
+
+            return sb.ToString();
+        }
+
         private bool SendMail(string name, string email, string id, string newPwd)
         {
             try
@@ -108,8 +99,8 @@ namespace WinPwdSearch
                 MailAddress mailFrom = new MailAddress("gmail계정");
 
                 MailMessage message = new MailMessage(mailFrom, mailTo);
-                message.Subject = $"{name}님의 비밀번호 초기화 안내 메일입니다.";
-                message.Body = $"{name}님의 비밀번호는 {newPwd}으로 초기화 되었습니다.";
+                message.Subject = $"{txtNameS}님의 비밀번호 초기화 안내 메일입니다.";
+                message.Body = $"{txtNameS}님의 비밀번호는 {newPwd}으로 초기화 되었습니다.";
                 message.BodyEncoding = Encoding.UTF8;
                 message.SubjectEncoding = Encoding.UTF8;
 
@@ -121,51 +112,6 @@ namespace WinPwdSearch
             {
                 return false;
             }
-        }
-
-        private string CreatePassword()
-        {
-            Random rnd = new Random();
-
-            //신규비밀번호 = 난수8자리(영문대문자 + 숫자)
-            StringBuilder sb = new StringBuilder();
-
-            for(int i=0; i<8; i++)
-            {
-                int val = rnd.Next(0, 36); //0~35 (0~9=>숫자, 10~35=>영문자)
-                if (val < 10)              //숫자
-                    sb.Append(val);
-                else                       //영문대문자 (65~90)
-                    sb.Append((char)(val + 55));
-            }
-
-            return sb.ToString();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            MemberDB db = new MemberDB();
-            DataTable dt = db.GetCodeListByCategory("SCHOOL");
-
-            DataRow dr = dt.NewRow();
-            dr["Code"] = "";
-            dr["CodeName"] = "선택";
-            dt.Rows.InsertAt(dr, 0);
-            dt.AcceptChanges();
-
-            comboBox1.DisplayMember = "CodeName";
-            comboBox1.ValueMember = "Code";
-            comboBox1.DataSource = dt;
-
-            //comboBox1.SelectedIndex = -1;
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            string schCode = comboBox1.SelectedValue.ToString();
-            string schName = comboBox1.Text;
-
-            MessageBox.Show(schCode + "/" + schName);
         }
     }
 }

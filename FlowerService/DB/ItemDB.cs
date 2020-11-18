@@ -9,6 +9,13 @@ using System.Threading.Tasks;
 
 namespace FlowerService.DB
 {
+    public struct Item
+    {
+        public string ItemName;
+        public string ItemType;
+        public int ItemPrice;
+        public string ItemCare;
+    }
     public class ItemDB : IDisposable
     {
         MySqlConnection conn;
@@ -105,6 +112,15 @@ namespace FlowerService.DB
                 return true;
             else
                 return false;
+        }
+
+        public void Insert(Item item)
+        {
+            string sql = $@"INSERT INTO flwitem( item_name,item_prcie, item_care, item_type) 
+                            VALUES ({item.ItemName}, {item.ItemPrice}, {item.ItemCare}, {item.ItemType})";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
         }
 
     }

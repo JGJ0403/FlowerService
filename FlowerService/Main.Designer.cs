@@ -65,7 +65,6 @@
             this.회원관리ToolStripMenuItem.Name = "회원관리ToolStripMenuItem";
             this.회원관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.회원관리ToolStripMenuItem.Text = "회원관리";
-            this.회원관리ToolStripMenuItem.Click += new System.EventHandler(this.회원관리ToolStripMenuItem_Click);
             // 
             // Main
             // 

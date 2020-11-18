@@ -15,6 +15,11 @@ namespace FlowerService
     {
         DataTable dtImage;
 
+        public frmItem()
+        {
+            InitializeComponent();
+        }
+
         public frmItem(int pid, string pname)
         {
             InitializeComponent();
@@ -74,6 +79,26 @@ namespace FlowerService
 
             //선택된 제품의 등록된 이미지목록을 listbox에 바인딩
             BindProductImageList(int.Parse(lblItemID.Text));
+        }
+
+        private void btnAdditem_Click(object sender, EventArgs e)
+        {
+            if(txtPrice.Text.Length < 1)
+            {
+                MessageBox.Show("가격을 입력해주세요");
+                return;
+            }
+
+            Item item;
+            item.ItemName = txtName.Text;
+            item.ItemCare = txtCare.Text;
+            item.ItemPrice = Convert.ToInt32(txtPrice.Text);
+            item.ItemType = txtCare.Text;
+
+            ItemDB idb = new ItemDB();
+            idb.Insert(item);
+            idb.Dispose();
+
         }
     }
 }

@@ -65,11 +65,23 @@
       <DependentUpon>periodControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\ItemDB.cs" />
-    <Compile Include="frmItem.cs">
+    <Compile Include="상품관리\frmItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmItem.Designer.cs">
+    <Compile Include="상품관리\frmItem.Designer.cs">
       <DependentUpon>frmItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="로그인, 회원가입\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="로그인, 회원가입\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="로그인, 회원가입\pwdSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="로그인, 회원가입\pwdSearch.Designer.cs">
+      <DependentUpon>pwdSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -83,12 +95,6 @@
     </Compile>
     <Compile Include="orderLook.Designer.cs">
       <DependentUpon>orderLook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Sign.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sign.Designer.cs">
-      <DependentUpon>Sign.cs</DependentUpon>
     </Compile>
     <Compile Include="infoOrder.cs">
       <SubType>Form</SubType>
@@ -110,23 +116,32 @@
     <Compile Include="PopUp\ZipSearchPopup.designer.cs">
       <DependentUpon>ZipSearchPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="로그인, 회원가입\Sign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="로그인, 회원가입\Sign.Designer.cs">
+      <DependentUpon>Sign.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="adminUser.resx">
       <DependentUpon>adminUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\periodControl.resx">
       <DependentUpon>periodControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmItem.resx">
+    <EmbeddedResource Include="상품관리\frmItem.resx">
       <DependentUpon>frmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="로그인, 회원가입\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="로그인, 회원가입\pwdSearch.resx">
+      <DependentUpon>pwdSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="orderLook.resx">
       <DependentUpon>orderLook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sign.resx">
-      <DependentUpon>Sign.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="infoOrder.resx">
       <DependentUpon>infoOrder.cs</DependentUpon>
@@ -145,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PopUp\ZipSearchPopup.resx">
       <DependentUpon>ZipSearchPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="로그인, 회원가입\Sign.resx">
+      <DependentUpon>Sign.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

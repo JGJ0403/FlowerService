@@ -60,11 +60,12 @@
             this.btnAdditem.Location = new System.Drawing.Point(820, 41);
             this.btnAdditem.Name = "btnAdditem";
             this.btnAdditem.Size = new System.Drawing.Size(91, 28);
-            this.btnAdditem.TabIndex = 37;
+            this.btnAdditem.TabIndex = 4;
             this.btnAdditem.TabStop = false;
             this.btnAdditem.Text = "상품등록";
             this.btnAdditem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdditem.UseVisualStyleBackColor = true;
+            this.btnAdditem.Click += new System.EventHandler(this.btnAdditem_Click);
             // 
             // lblItemID
             // 
@@ -81,7 +82,7 @@
             this.txtCare.Multiline = true;
             this.txtCare.Name = "txtCare";
             this.txtCare.Size = new System.Drawing.Size(277, 27);
-            this.txtCare.TabIndex = 35;
+            this.txtCare.TabIndex = 3;
             // 
             // txtPrice
             // 
@@ -89,7 +90,7 @@
             this.txtPrice.Multiline = true;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(277, 28);
-            this.txtPrice.TabIndex = 34;
+            this.txtPrice.TabIndex = 2;
             // 
             // btnDelete
             // 
@@ -152,7 +153,7 @@
             this.txtCase.Multiline = true;
             this.txtCase.Name = "txtCase";
             this.txtCase.Size = new System.Drawing.Size(277, 27);
-            this.txtCase.TabIndex = 27;
+            this.txtCase.TabIndex = 1;
             // 
             // label1
             // 
@@ -169,7 +170,7 @@
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(277, 28);
-            this.txtName.TabIndex = 25;
+            this.txtName.TabIndex = 0;
             // 
             // btnSearch
             // 
@@ -187,7 +188,7 @@
             this.txtItemSearch.Multiline = true;
             this.txtItemSearch.Name = "txtItemSearch";
             this.txtItemSearch.Size = new System.Drawing.Size(235, 23);
-            this.txtItemSearch.TabIndex = 21;
+            this.txtItemSearch.TabIndex = 5;
             // 
             // btnAddImg
             // 

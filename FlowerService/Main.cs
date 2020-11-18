@@ -22,11 +22,5 @@ namespace FlowerService
             frmItem frm2 = new frmItem();
             frm2.Show();
         }
-
-        private void 회원관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            adminUser user = new adminUser();
-            user.Show();
-        }
     }
 }

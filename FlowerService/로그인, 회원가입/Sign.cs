@@ -10,12 +10,11 @@ using System.Windows.Forms;
 
 namespace FlowerService
 {
-    public partial class frmUser : Form
+    public partial class Sign : Form
     {
-        public frmUser()
+        public Sign()
         {
             InitializeComponent();
         }
-
     }
 }
