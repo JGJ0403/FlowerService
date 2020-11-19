@@ -91,6 +91,7 @@ namespace FlowerService
             {
                 if (member.IsAdmin == "Y")
                     MessageBox.Show("관리자로 로그인하셨습니다.");
+
                 else
                 {
                     MessageBox.Show($"{member.Name}님 환영합니다.");

@@ -8,14 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FlowerService
+namespace FlowerService.사용자
 {
-    public partial class orderLook : Form
+    public partial class userMain : Form
     {
-        public orderLook()
+        public userMain()
         {
             InitializeComponent();
         }
-
     }
 }

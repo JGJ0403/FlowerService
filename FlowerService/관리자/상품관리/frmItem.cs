@@ -59,26 +59,27 @@ namespace FlowerService
             listBox1.Items.Clear();
             pictureBox1.Image = null;
 
-            ItemDB db = new ItemDB();
-            dtImage = db.GetProductImageList(pid);
-            db.Dispose();
+            //ItemDB db = new ItemDB();
+            //dtImage = db.GetProductImageList(pid);
+            //db.Dispose();
 
-            foreach (DataRow dr in dtImage.Rows)
-            {
-                listBox1.Items.Add(dr["productImgFileName"].ToString());
-            }
+            //foreach (DataRow dr in dtImage.Rows)
+            //{
+            //    listBox1.Items.Add(dr["productImgFileName"].ToString());
+            //}
         }
 
         private void dgvItem_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             //선택된 제품정보를 컨트롤에 바인딩
-            //productID, productName, productPrice
-            lblItemID.Text = dgvItem["item_ID", e.RowIndex].Value.ToString();
-            txtName.Text = dgvItem["item_Name", e.RowIndex].Value.ToString();
-            txtPrice.Text = dgvItem["item_Price", e.RowIndex].Value.ToString();
+            txtItemID.Text = dgvItem["item_id", e.RowIndex].Value.ToString();
+            txtName.Text = dgvItem["item_name", e.RowIndex].Value.ToString();
+            txtType.Text = dgvItem["item_type", e.RowIndex].Value.ToString();
+            txtPrice.Text = dgvItem["item_prcie", e.RowIndex].Value.ToString();
+            txtCare.Text = dgvItem["item_care", e.RowIndex].Value.ToString();
 
             //선택된 제품의 등록된 이미지목록을 listbox에 바인딩
-            BindProductImageList(int.Parse(lblItemID.Text));
+            BindProductImageList(int.Parse(txtItemID.Text));
         }
 
         private void btnAdditem_Click(object sender, EventArgs e)
@@ -90,6 +91,7 @@ namespace FlowerService
             }
 
             Item item;
+            item.ItemID = Convert.ToInt32(txtItemID.Text);
             item.ItemName = txtName.Text;
             item.ItemCare = txtCare.Text;
             item.ItemPrice = Convert.ToInt32(txtPrice.Text);
@@ -98,7 +100,33 @@ namespace FlowerService
             ItemDB idb = new ItemDB();
             idb.Insert(item);
             idb.Dispose();
+            
+            MessageBox.Show("등록완료");
+        }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string name = dgvItem[1, dgvItem.CurrentRow.Index].Value.ToString();
+
+            if (MessageBox.Show($"{name} 상품을 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                //DB에서 데이터 삭제
+                int itemid = (int)dgvItem[0, dgvItem.CurrentRow.Index].Value;
+
+                ItemDB db = new ItemDB();
+                bool result = db.Delete(itemid);
+                db.Dispose();
+
+                if (result)
+                {
+                    MessageBox.Show("삭제되었습니다.");
+                    //LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("다시 삭제를 시도하여 주십시오.");
+                }
+            }
         }
     }
 }

@@ -51,10 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adminUser.cs">
+    <Compile Include="사용자\adminUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="adminUser.Designer.cs">
+    <Compile Include="사용자\adminUser.Designer.cs">
       <DependentUpon>adminUser.cs</DependentUpon>
     </Compile>
     <Compile Include="CommonUtil.cs" />
@@ -65,10 +65,10 @@
       <DependentUpon>periodControl.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\ItemDB.cs" />
-    <Compile Include="상품관리\frmItem.cs">
+    <Compile Include="관리자\상품관리\frmItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="상품관리\frmItem.Designer.cs">
+    <Compile Include="관리자\상품관리\frmItem.Designer.cs">
       <DependentUpon>frmItem.cs</DependentUpon>
     </Compile>
     <Compile Include="로그인, 회원가입\Login.cs">
@@ -83,23 +83,17 @@
     <Compile Include="로그인, 회원가입\pwdSearch.Designer.cs">
       <DependentUpon>pwdSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="관리자\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="관리자\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="DB\MemberDB.cs" />
-    <Compile Include="orderLook.cs">
+    <Compile Include="관리자\infoOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="orderLook.Designer.cs">
-      <DependentUpon>orderLook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="infoOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="infoOrder.Designer.cs">
+    <Compile Include="관리자\infoOrder.Designer.cs">
       <DependentUpon>infoOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -122,13 +116,25 @@
     <Compile Include="로그인, 회원가입\Sign.Designer.cs">
       <DependentUpon>Sign.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="adminUser.resx">
+    <Compile Include="사용자\SelectItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="사용자\SelectItem.Designer.cs">
+      <DependentUpon>SelectItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="사용자\userMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="사용자\userMain.Designer.cs">
+      <DependentUpon>userMain.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="사용자\adminUser.resx">
       <DependentUpon>adminUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\periodControl.resx">
       <DependentUpon>periodControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="상품관리\frmItem.resx">
+    <EmbeddedResource Include="관리자\상품관리\frmItem.resx">
       <DependentUpon>frmItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="로그인, 회원가입\Login.resx">
@@ -137,13 +143,10 @@
     <EmbeddedResource Include="로그인, 회원가입\pwdSearch.resx">
       <DependentUpon>pwdSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="관리자\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="orderLook.resx">
-      <DependentUpon>orderLook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="infoOrder.resx">
+    <EmbeddedResource Include="관리자\infoOrder.resx">
       <DependentUpon>infoOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -163,6 +166,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="로그인, 회원가입\Sign.resx">
       <DependentUpon>Sign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="사용자\SelectItem.resx">
+      <DependentUpon>SelectItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="사용자\userMain.resx">
+      <DependentUpon>userMain.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

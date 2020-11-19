@@ -38,17 +38,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCase = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.txtItemSearch = new System.Windows.Forms.TextBox();
             this.btnAddImg = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dgvItem = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtItemID = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
@@ -57,7 +58,7 @@
             // btnAdditem
             // 
             this.btnAdditem.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnAdditem.Location = new System.Drawing.Point(820, 41);
+            this.btnAdditem.Location = new System.Drawing.Point(852, 32);
             this.btnAdditem.Name = "btnAdditem";
             this.btnAdditem.Size = new System.Drawing.Size(91, 28);
             this.btnAdditem.TabIndex = 4;
@@ -70,15 +71,14 @@
             // lblItemID
             // 
             this.lblItemID.AutoSize = true;
-            this.lblItemID.Location = new System.Drawing.Point(808, 135);
+            this.lblItemID.Location = new System.Drawing.Point(829, 142);
             this.lblItemID.Name = "lblItemID";
-            this.lblItemID.Size = new System.Drawing.Size(16, 12);
+            this.lblItemID.Size = new System.Drawing.Size(0, 12);
             this.lblItemID.TabIndex = 36;
-            this.lblItemID.Text = "ID";
             // 
             // txtCare
             // 
-            this.txtCare.Location = new System.Drawing.Point(497, 224);
+            this.txtCare.Location = new System.Drawing.Point(501, 263);
             this.txtCare.Multiline = true;
             this.txtCare.Name = "txtCare";
             this.txtCare.Size = new System.Drawing.Size(277, 27);
@@ -86,7 +86,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(497, 175);
+            this.txtPrice.Location = new System.Drawing.Point(501, 217);
             this.txtPrice.Multiline = true;
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(277, 28);
@@ -102,12 +102,13 @@
             this.btnDelete.TabStop = false;
             this.btnDelete.Text = "삭제하기";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(638, 260);
+            this.pictureBox1.Location = new System.Drawing.Point(638, 296);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(283, 239);
+            this.pictureBox1.Size = new System.Drawing.Size(283, 203);
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
             // 
@@ -115,15 +116,15 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(408, 260);
+            this.listBox1.Location = new System.Drawing.Point(408, 296);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(224, 268);
+            this.listBox1.Size = new System.Drawing.Size(224, 232);
             this.listBox1.TabIndex = 31;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(421, 233);
+            this.label4.Location = new System.Drawing.Point(425, 272);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 30;
@@ -132,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(421, 184);
+            this.label3.Location = new System.Drawing.Point(425, 226);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 29;
@@ -141,24 +142,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(421, 135);
+            this.label2.Location = new System.Drawing.Point(425, 179);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 28;
             this.label2.Text = "상품종류";
             // 
-            // txtCase
+            // txtType
             // 
-            this.txtCase.Location = new System.Drawing.Point(497, 127);
-            this.txtCase.Multiline = true;
-            this.txtCase.Name = "txtCase";
-            this.txtCase.Size = new System.Drawing.Size(277, 27);
-            this.txtCase.TabIndex = 1;
+            this.txtType.Location = new System.Drawing.Point(501, 171);
+            this.txtType.Multiline = true;
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(277, 27);
+            this.txtType.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(421, 86);
+            this.label1.Location = new System.Drawing.Point(425, 134);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 26;
@@ -166,29 +167,11 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(497, 78);
+            this.txtName.Location = new System.Drawing.Point(501, 126);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(277, 28);
             this.txtName.TabIndex = 0;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSearch.Location = new System.Drawing.Point(674, 41);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(95, 23);
-            this.btnSearch.TabIndex = 22;
-            this.btnSearch.Text = "검색하기";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            // 
-            // txtItemSearch
-            // 
-            this.txtItemSearch.Location = new System.Drawing.Point(423, 41);
-            this.txtItemSearch.Multiline = true;
-            this.txtItemSearch.Name = "txtItemSearch";
-            this.txtItemSearch.Size = new System.Drawing.Size(235, 23);
-            this.txtItemSearch.TabIndex = 5;
             // 
             // btnAddImg
             // 
@@ -256,11 +239,42 @@
             this.dgvItem.TabIndex = 20;
             this.dgvItem.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellDoubleClick);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(425, 88);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 12);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "상품ID";
+            // 
+            // txtItemID
+            // 
+            this.txtItemID.Location = new System.Drawing.Point(501, 80);
+            this.txtItemID.Multiline = true;
+            this.txtItemID.Name = "txtItemID";
+            this.txtItemID.Size = new System.Drawing.Size(277, 28);
+            this.txtItemID.TabIndex = 37;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button4.Location = new System.Drawing.Point(427, 34);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(135, 28);
+            this.button4.TabIndex = 39;
+            this.button4.TabStop = false;
+            this.button4.Text = "상품목록조회";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // frmItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(955, 549);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtItemID);
             this.Controls.Add(this.btnAdditem);
             this.Controls.Add(this.lblItemID);
             this.Controls.Add(this.txtCare);
@@ -271,11 +285,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtCase);
+            this.Controls.Add(this.txtType);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtItemSearch);
             this.Controls.Add(this.btnAddImg);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvItem);
@@ -302,16 +314,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCase;
+        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.TextBox txtItemSearch;
         private System.Windows.Forms.Button btnAddImg;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dgvItem;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtItemID;
+        private System.Windows.Forms.Button button4;
     }
 }

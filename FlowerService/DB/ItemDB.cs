@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace FlowerService.DB
 {
     public struct Item
     {
+        public int ItemID;
         public string ItemName;
         public string ItemType;
         public int ItemPrice;
@@ -116,11 +118,43 @@ namespace FlowerService.DB
 
         public void Insert(Item item)
         {
-            string sql = $@"INSERT INTO flwitem( item_name,item_prcie, item_care, item_type) 
-                            VALUES ({item.ItemName}, {item.ItemPrice}, {item.ItemCare}, {item.ItemType})";
+            string sql = $@"INSERT INTO flwitem( item_id, item_name,item_prcie, item_care, item_type) 
+                            VALUES (@item_id, @item_name, @item_prcie, @item_care , @item_type )";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.Parameters.Add("@item_id", MySqlDbType.Int32);
+            cmd.Parameters["@item_id"].Value = item.ItemID;
+            cmd.Parameters.Add("@item_name", MySqlDbType.VarChar);
+            cmd.Parameters["@item_name"].Value = item.ItemName;
+            cmd.Parameters.Add("@item_prcie", MySqlDbType.Int32);
+            cmd.Parameters["@item_prcie"].Value = item.ItemPrice;
+            cmd.Parameters.Add("@item_care", MySqlDbType.VarChar);
+            cmd.Parameters["@item_care"].Value = item.ItemCare;
+            cmd.Parameters.Add("@item_type", MySqlDbType.VarChar);
+            cmd.Parameters["@item_type"].Value = item.ItemType;
+
             cmd.ExecuteNonQuery();
+            cmd.Dispose();
+        }
+
+        public bool Delete(int itemID)
+        {
+            try
+            {
+                string sql = $@"update flwitem 
+                                   set deleted = 1 
+                                 where item_id = {itemID}";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+                return false;
+            }
         }
 
     }
